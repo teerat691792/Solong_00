@@ -1,0 +1,79 @@
+5c5
+< ** Login   <ol@42.fr>
+---
+> ** Login   <ol@staff.42.fr>
+8c8
+< ** Last update Tue Oct 14 16:23:28 2019 Olivier Crouzet
+---
+> ** Last update Tue Oct 01 16:23:28 2014 Olivier Crouzet
+16a17
+> ** FR msg - FR msg - FR msg
+18,34c19,41
+< ** This library is a simple framework to help 42 students
+< ** create simple graphical apps.
+< ** It only provides the minimum functions, it's students' job
+< ** to create the missing pieces for their own project :)
+< **
+< ** The MinilibX can load XPM and PNG images.
+< ** Please note that both image loaders are incomplete, some
+< ** image may not load.
+< **
+< ** For historical reasons, the alpha byte represent transparency
+< ** instead of opacity.
+< ** Also, for compatibility reasons, prototypes may show inconsistant
+< ** types.
+< **
+< ** Only the dynamic library is available. It must be placed in an appropriate path.
+< ** ./ is one of them. You can also use DYLD_LIBRARY_PATH
+< **
+---
+> ** MacOSX
+> ** La MinilibX utilise 2 frameworks Mac : OpenGL et AppKit
+> **    qu'il faut ajouter a la compilation :
+> **   -framework OpenGL -framework AppKit
+> **
+> ** UNIX / Linux
+> ** La MinilibX utilise 2 librairies supplementaires qu'il
+> **      est necessaire de rajouter a la compilation :
+> **   -lmlx -lXext -lX11
+> **
+> ** La MinilibX permet le chargement des images de type Xpm.
+> ** Notez que cette implementation est incomplete.
+> **
+> ** Il y a des differences entre X11 et MacOS.
+> ** les numeros des touches ne sont pas les memes,
+> ** les numeros des boutons souris ne sont pas les memes.
+> ** Egalement l'expose est gere differemment, et sous MacOS
+> ** il est preferable d'entrer le plus tot possible dans mlx_loop,
+> ** il est normal que les fenetres n'apparaissent pas avant mlx_loop
+> ** (ou bien forcez avec mlx_do_sync mais c'est pas genial).
+> ** Sous MacOS, l'octet Alpha est pris en compte dans toutes les
+> ** images, et represente la transparence et non l'opacite comme
+> ** c'est normalement le cas.
+63,64c70
+< **  color is 0xAARRGGBB format
+< **  x and y must fit into the size of the window, no control is done on the values
+---
+> **  color is 0x00RRGGBB
+79,80c85,86
+< **  endian : 0 = graphical sever is little endian, 1 = big endian
+< **  usefull in a network environment where graphical app show on a remote monitor that can have a different endian
+---
+> **  endian : 0 = sever X is little endian, 1 = big endian
+> **  endian : useless on macos, client and graphical framework have the same endian
+112d117
+< **   mlx_string_put display may vary in size between OS and between mlx implementations
+144,156d148
+< #define MLX_SYNC_IMAGE_WRITABLE		1
+< #define MLX_SYNC_WIN_FLUSH_CMD		2
+< #define MLX_SYNC_WIN_CMD_COMPLETED	3
+< int	mlx_sync(int cmd, void *param);
+< /*
+< ** image_writable can loop forever if no flush occurred. Flush is always done by mlx_loop.
+< ** cmd_completed first flush then wait for completion.
+< ** mlx_do_sync equals cmd_completed for all windows.
+< ** cmd is one of the define, param will be img_ptr or win_ptr accordingly
+< */
+< 
+< int	mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
+< 
