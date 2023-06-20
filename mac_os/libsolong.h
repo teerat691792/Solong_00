@@ -14,6 +14,10 @@
 # define LIBSOLONG_H
 
 #include <math.h>
+#include "../minilibx_linux/mlx.h"
+#include "libft/libft.h"
+
+/*
 
 # define KEY_ESC 53
 # define KEY_W 13
@@ -24,14 +28,29 @@
 # define KEY_DOWN 125
 # define KEY_RIGHT 124
 # define KEY_UP 126
-# define KEY_UP 126
-# define KEY_UP 126
-# define KEY_UP 126
-# define P_PLAY "./pic/bird_64.png"
-# define P_SKY "./pic/sky_64.png"
-# define P_WALL "./pic/wall_64.png"
-# define P_COIN "./pic/coin_64.png"
-# define P_EXIT "./pic/exit_64.png"
+# define BOX 64
+
+*/
+
+
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+# define BOX 64
+
+
+
+# define P_PLAY "./pic_xpm/bird_mod_64.xpm"
+# define P_SKY "./pic_xpm/blue_mod_64.xpm"
+# define P_WALL "./pic_xpm/block_mod_64.xpm"
+# define P_COIN "./pic_xpm/coin_mod_64.xpm"
+# define P_EXIT "./pic_xpm/exit_mod_64.xpm"
 
 
 typedef struct s_ber
@@ -81,6 +100,49 @@ typedef struct s_sol
 	t_data	sky;
 }	t_sol;
 
+//ft_solong.c
+void ft_playermove(t_sol *sol, int x, int y);
+void	ft_startwindow(t_sol *sol);
+int     key_hook(int keycode, t_sol *sol);
 
+//ft_draw.c
+void	ft_draw_pixel(int width, int height, t_sol  *sol);
+void	ft_draw_grid(int box, int width , int height, t_sol *sol);
+void	ft_show_str(int box, t_sol *sol, t_ber *map);
+
+
+// ft_flag.c
+int		ft_noborder_up_dw(t_sol *sol);
+int		ft_noborder_lf_rg(t_sol *sol);
+int		ft_stranger(t_sol *sol);
+int		ft_checkflag(t_sol *sol);
+int		ft_findartifact(char *str,int c);
+
+// ft_map.c
+void	ft_collectmap(int fd, t_sol *sol);
+int	**ft_mallocmap(t_ber *map);
+int		**ft_assignmap(int **arr, t_ber *map);
+void	ft_readmap(int **arr, t_ber *map);
+void	ft_freemap(int	**arr, t_ber *map);
+//void	ft_readber(int fd);
+
+//	checkmove
+int		ft_checkup(t_sol *sol);
+int		ft_checkdown(t_sol *sol);
+int		ft_checkright(t_sol *sol);
+int		ft_checkleft(t_sol *sol);
+
+
+//ft_floodfill.c
+int		ft_validpath(t_sol *sol);
+int		ft_findpos(t_sol *sol, int value, int *flag);
+void	ft_dps(int **arr, int x, int y, int *valid);
+
+//ft_pic.c
+void	ft_init_pic(t_data *data);
+t_image	*ft_create_picture(t_sol *sol,t_data obj, char *path);
+void	ft_destroy_all(t_sol *sol);
+void	ft_show_pic(t_sol *sol, t_ber *map);
+void	ft_put_picture(t_sol *sol,void *ptr, int x, int y);
 
 #endif
