@@ -10,7 +10,7 @@ int		ft_checkleft(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(1);
+			exit(EXIT_SUCCESS);
 		}
 	}
 	if (sol->map.arr[sol->play.y][sol->play.x - 1] == 'C')
@@ -35,7 +35,7 @@ int		ft_checkup(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(1);
+			exit(0);
 		}
 	}
 	if (sol->map.arr[sol->play.y - 1][sol->play.x] == 'C')
@@ -54,13 +54,13 @@ int		ft_checkup(t_sol *sol)
 
 int		ft_checkdown(t_sol *sol)
 {
-	if (sol->map.arr[sol->play.y + 1][sol->play.x] == 'C')
+	if (sol->map.arr[sol->play.y + 1][sol->play.x] == 'E')
 	{
 		if (sol->coin.count == 0)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(1);
+			exit(0);
 		}
 	}
 	if (sol->map.arr[sol->play.y + 1][sol->play.x] == 'C')
@@ -85,7 +85,7 @@ int		ft_checkright(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(1);
+			exit(0);
 		}
 	}
 	if (sol->map.arr[sol->play.y][sol->play.x + 1] == 'C')

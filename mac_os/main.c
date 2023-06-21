@@ -19,9 +19,9 @@ int	main(int argc, char **argv)
 		ft_collectmap(fd, sol);
 		close(fd);
 //			ft_printf("str 	= %s\n",sol->map.str);
-//			ft_printf("col 	= %d\t",sol->map.col);
-//			ft_printf("row 	= %d\t",sol->map.row);
-//			ft_printf("len 	= %d\n",sol->map.len);
+			ft_printf("col 	= %d\t",sol->map.col);
+			ft_printf("row 	= %d\t",sol->map.row);
+			ft_printf("len 	= %d\n",sol->map.len);
 //		sol->play.count = ft_findartifact(sol->map.str, 'P');
 //		sol->coin.count = ft_findartifact(sol->map.str, 'C');
 //		sol->exit.count = ft_findartifact(sol->map.str, 'E');

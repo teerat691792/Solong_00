@@ -6,16 +6,21 @@
 #    By: tkulket <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 10:09:30 by tkulket           #+#    #+#              #
-#    Updated: 2023/06/17 15:08:13 by tkulket          ###   ########.fr        #
+#    Updated: 2023/06/21 21:54:04 by tkulket          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 
-LIB		=	-L. -lsolong \
+#LIB		=	-L. -lsolong \
 			-Ilibft -Llibft -lft \
 			-I../minilibx_linux -L../minilibx_linux -lmlx \
 			-L/usr/lib -lXext -lX11 -lm -lz
+
+LIB		=	-L. -lsolong \
+			-Ilibft -Llibft -lft \
+			-I../minilibx -L../minilibx -lmlx \
+			-framework OpenGL -framework AppKit -lz
 
 NAME  = libsolong.a
 

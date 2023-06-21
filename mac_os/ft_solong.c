@@ -36,8 +36,8 @@ void ft_startwindow(t_sol *sol)
 		ft_printf("boxsize = %d  \n", sol->box);
 		ft_printf("map.row = %d ,  map.col  = %d \n", sol->map.row, sol->map.col);
 		ft_printf("play.w = %d ,play.h  = %d \n", sol->play.w, sol->play.h);
-        sol->h = sol->box * sol->map.row;
-        sol->w = sol->box * (sol->map.col - 1);
+		sol->h = sol->box * sol->map.row;
+		sol->w = sol->box * (sol->map.col - 1);
 		sol->play.img = ft_create_picture(sol, sol->play,P_PLAY);
 		sol->wall.img = ft_create_picture(sol, sol->wall,P_WALL);
 		sol->exit.img = ft_create_picture(sol, sol->exit,P_EXIT);
@@ -53,12 +53,21 @@ void ft_startwindow(t_sol *sol)
 //		ft_printf("P( %d , %d)\n", sol->play.x, sol->play.y);
 		ft_playermove(sol, sol->play.x, sol->play.y);
 
-        mlx_key_hook(sol->win, key_hook, sol);
+		// mlx_hook (press CLOSE)
+		mlx_hook(sol->win, CLK_CLOSE, 1L << 0,ft_clickclose, sol);
+
+        mlx_key_hook(sol->win, ft_key_hook, sol);
         mlx_loop(sol->mlx);
 }
 
+int		ft_clickclose(t_sol *sol)
+{
+		ft_destroy_all(sol);
+		exit(0);
+}
 
-int		key_hook(int keycode, t_sol *sol)
+
+int		ft_key_hook(int keycode, t_sol *sol)
 {
 		mlx_clear_window(sol->mlx, sol->win);
 		if (keycode == KEY_W || keycode == KEY_UP)
@@ -73,8 +82,10 @@ int		key_hook(int keycode, t_sol *sol)
         {
 			ft_destroy_all(sol);
 			ft_printf("ESC exit \n");
+			// free everry malloc pionter
             exit(0);
         }
+		ft_printf("coin(s) left = %d \t",sol->coin.count);
 		ft_show_pic(sol, &sol->map);
 		ft_playermove(sol, sol->play.x, sol->play.y);
 		return (0);

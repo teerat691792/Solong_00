@@ -64,8 +64,8 @@ int	ft_stranger(t_sol *sol)
 	x += sol->exit.count;
 	x += ft_findartifact(sol->map.str, '0');
 	x += ft_findartifact(sol->map.str, '1');
-	x += ft_findartifact(sol->map.str, '\n');
-	if (sol->map.len == x)
+	ft_printf("x = %d\n");
+	if (x == (sol->map.col - 1) * sol->map.row)
 		return (0);
 	return(1);
 }
@@ -86,9 +86,9 @@ int	ft_checkflag(t_sol *sol)
 		return (0);
 	if(ft_noborder_lf_rg(sol))
 		return (0);
-	if(ft_validpath(sol) == 0)
-		return (0);
 	if(ft_stranger(sol))
+		return (0);
+	if(ft_validpath(sol) == 0)
 		return (0);
 	return (1);
 }

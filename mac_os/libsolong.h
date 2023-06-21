@@ -14,11 +14,12 @@
 # define LIBSOLONG_H
 
 #include <math.h>
-#include "../minilibx_linux/mlx.h"
+#include "../minilibx/mlx.h"
 #include "libft/libft.h"
 
-/*
-
+# define MAX_HEIGHT 1280
+# define MAX_WIDTH 2560
+# define CLK_CLOSE 17
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
@@ -30,9 +31,10 @@
 # define KEY_UP 126
 # define BOX 64
 
-*/
+/*
 
-
+# define MAX_HEIGHT 1280
+# define MAX_WIDTH 2560
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
@@ -43,6 +45,8 @@
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define BOX 64
+
+*/
 
 
 
@@ -103,7 +107,8 @@ typedef struct s_sol
 //ft_solong.c
 void ft_playermove(t_sol *sol, int x, int y);
 void	ft_startwindow(t_sol *sol);
-int     key_hook(int keycode, t_sol *sol);
+int     ft_key_hook(int keycode, t_sol *sol);
+int		ft_clickclose(t_sol *sol);
 
 //ft_draw.c
 void	ft_draw_pixel(int width, int height, t_sol  *sol);
@@ -137,6 +142,8 @@ int		ft_checkleft(t_sol *sol);
 int		ft_validpath(t_sol *sol);
 int		ft_findpos(t_sol *sol, int value, int *flag);
 void	ft_dps(int **arr, int x, int y, int *valid);
+int		ft_rev_findpos(t_sol *sol, int value);
+void	ft_rev_dps(int **arr, int x, int y, int *play, int *coin);
 
 //ft_pic.c
 void	ft_init_pic(t_data *data);
