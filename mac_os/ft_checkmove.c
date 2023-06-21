@@ -1,8 +1,9 @@
+
+
+
 #include "libsolong.h"
 
-
-
-int		ft_checkleft(t_sol *sol)
+int	ft_checkleft(t_sol *sol)
 {
 	if (sol->map.arr[sol->play.y][sol->play.x - 1] == 'E')
 	{
@@ -10,7 +11,7 @@ int		ft_checkleft(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(EXIT_SUCCESS);
+			exit (EXIT_SUCCESS);
 		}
 	}
 	if (sol->map.arr[sol->play.y][sol->play.x - 1] == 'C')
@@ -19,15 +20,14 @@ int		ft_checkleft(t_sol *sol)
 		sol->map.arr[sol->play.y][sol->play.x - 1] = '0';
 	}
 	if (sol->map.arr[sol->play.y][sol->play.x - 1] == '1')
-		return(0);
+		return (0);
 	sol->play.move++;
 	sol->play.x--;
-	ft_printf("player move(s) = %d\n",sol->play.move);
+	ft_printf("player move(s) = %d\n", sol->play.move);
 	return (1);
 }
 
-
-int		ft_checkup(t_sol *sol)
+int	ft_checkup(t_sol *sol)
 {
 	if (sol->map.arr[sol->play.y - 1][sol->play.x] == 'E')
 	{
@@ -35,7 +35,7 @@ int		ft_checkup(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(0);
+			exit (0);
 		}
 	}
 	if (sol->map.arr[sol->play.y - 1][sol->play.x] == 'C')
@@ -44,15 +44,14 @@ int		ft_checkup(t_sol *sol)
 		sol->map.arr[sol->play.y - 1][sol->play.x] = '0';
 	}
 	if (sol->map.arr[sol->play.y - 1][sol->play.x] == '1')
-		return(0);
+		return (0);
 	sol->play.move++;
 	sol->play.y--;
-	ft_printf("player move(s) = %d\n",sol->play.move);
+	ft_printf("player move(s) = %d\n", sol->play.move);
 	return (1);
 }
 
-
-int		ft_checkdown(t_sol *sol)
+int	ft_checkdown(t_sol *sol)
 {
 	if (sol->map.arr[sol->play.y + 1][sol->play.x] == 'E')
 	{
@@ -60,7 +59,7 @@ int		ft_checkdown(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(0);
+			exit (0);
 		}
 	}
 	if (sol->map.arr[sol->play.y + 1][sol->play.x] == 'C')
@@ -69,15 +68,14 @@ int		ft_checkdown(t_sol *sol)
 		sol->map.arr[sol->play.y + 1][sol->play.x] = '0';
 	}
 	if (sol->map.arr[sol->play.y + 1][sol->play.x] == '1')
-		return(0);
+		return (0);
 	sol->play.move++;
 	sol->play.y++;
-	ft_printf("player move(s) = %d\n",sol->play.move);
+	ft_printf("player move(s) = %d\n", sol->play.move);
 	return (1);
 }
 
-
-int		ft_checkright(t_sol *sol)
+int	ft_checkright(t_sol *sol)
 {
 	if (sol->map.arr[sol->play.y][sol->play.x + 1] == 'E')
 	{
@@ -85,7 +83,7 @@ int		ft_checkright(t_sol *sol)
 		{
 			ft_printf("\n\n+*+*+*+*+*+*+*+ SUCCESS +*+*+*+*+*+*+*+\n\n");
 			ft_destroy_all(sol);
-			exit(0);
+			exit (0);
 		}
 	}
 	if (sol->map.arr[sol->play.y][sol->play.x + 1] == 'C')
@@ -94,9 +92,9 @@ int		ft_checkright(t_sol *sol)
 		sol->map.arr[sol->play.y][sol->play.x + 1] = '0';
 	}
 	if (sol->map.arr[sol->play.y][sol->play.x + 1] == '1')
-		return(0);
+		return (0);
 	sol->play.move++;
 	sol->play.x++;
-	ft_printf("player move(s) = %d\n",sol->play.move);
+	ft_printf("player move(s) = %d\n", sol->play.move);
 	return (1);
 }

@@ -18,17 +18,17 @@ int	main(int argc, char **argv)
 		sol = malloc(sizeof(t_sol));
 		ft_collectmap(fd, sol);
 		close(fd);
-//			ft_printf("str 	= %s\n",sol->map.str);
-			ft_printf("col 	= %d\t",sol->map.col);
-			ft_printf("row 	= %d\t",sol->map.row);
-			ft_printf("len 	= %d\n",sol->map.len);
+//		ft_printf("str 	= %s\n",sol->map.str);
+		ft_printf("col 	= %d\t", sol->map.col);
+		ft_printf("row 	= %d\t", sol->map.row);
+		ft_printf("len 	= %d\n", sol->map.len);
 //		sol->play.count = ft_findartifact(sol->map.str, 'P');
 //		sol->coin.count = ft_findartifact(sol->map.str, 'C');
 //		sol->exit.count = ft_findartifact(sol->map.str, 'E');
-//			ft_printf("play = %d\t",sol->play.count);
-//			ft_printf("co(x, y) = %d, %d\n", sol->play.x, sol->play.y);
-//			ft_printf("coin = %d\t",sol->coin.count);
-//			ft_printf("exit = %d\n",sol->exit.count);
+//		ft_printf("play = %d\t",sol->play.count);
+//		ft_printf("co(x, y) = %d, %d\n", sol->play.x, sol->play.y);
+//		ft_printf("coin = %d\t",sol->coin.count);
+//		ft_printf("exit = %d\n",sol->exit.count);
 		if (ft_checkflag(sol))
 		{
 			ft_printf(" ----- > Flag PASS\n");

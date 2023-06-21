@@ -12,12 +12,12 @@
 
 FLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 
-#LIB		=	-L. -lsolong \
+LIB		=	-L. -lsolong \
 			-Ilibft -Llibft -lft \
 			-I../minilibx_linux -L../minilibx_linux -lmlx \
 			-L/usr/lib -lXext -lX11 -lm -lz
 
-LIB		=	-L. -lsolong \
+#LIB		=	-L. -lsolong \
 			-Ilibft -Llibft -lft \
 			-I../minilibx -L../minilibx -lmlx \
 			-framework OpenGL -framework AppKit -lz
@@ -37,7 +37,7 @@ OBJS := $(SRC:.c=.o)
 all: $(NAME)
 
 .c.o:
-	gcc $(FLAGS) -c $< -o $(<:.c=.o)
+	gcc $(FLAGS) $(LIB) -c $< -o $(<:.c=.o)
 #	gcc $(FLAGS) main.c -L. -lsolong-Ilibft -Llibft -lft \
 	-Iminilibx -Lminilibx -lmlx \
 	-framework OpenGL -framework AppKit -lz -o solong

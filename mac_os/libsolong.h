@@ -14,7 +14,7 @@
 # define LIBSOLONG_H
 
 #include <math.h>
-#include "../minilibx/mlx.h"
+#include "../minilibx_linux/mlx.h"
 #include "libft/libft.h"
 
 # define MAX_HEIGHT 1280

@@ -1,4 +1,5 @@
 
+
 #include "libsolong.h"
 
 void	ft_collectmap(int fd, t_sol *sol)
@@ -16,7 +17,7 @@ void	ft_collectmap(int fd, t_sol *sol)
 		if (sol->map.col < (int)ft_strlen(sol->map.str))
 			sol->map.col = ft_strlen(sol->map.str);
 		sol->map.len += sol->map.col;
-		collector = ft_strnjoin(collector,sol->map.str);
+		collector = ft_strnjoin(collector, sol->map.str);
 		free(sol->map.str);
 		sol->map.str = get_next_line(fd);
 	}
@@ -25,10 +26,9 @@ void	ft_collectmap(int fd, t_sol *sol)
 	free(collector);
 }
 
-
 int	**ft_mallocmap(t_ber *map)
 {
-	int	**arr;
+	int		**arr;
 	int		times;
 
 	arr = NULL;
@@ -36,7 +36,7 @@ int	**ft_mallocmap(t_ber *map)
 		return (NULL);
 	times = 0;
 	arr = malloc(sizeof(int *) * map->row + 1);
-	if(!arr)
+	if (!arr)
 		return (NULL);
 	while (times < map->row)
 	{
@@ -48,16 +48,16 @@ int	**ft_mallocmap(t_ber *map)
 	return (arr);
 }
 
-int **ft_assignmap(int **arr, t_ber *map)
+int	**ft_assignmap(int **arr, t_ber *map)
 {
-	int x;
+	int	x;
 	int	y;
 	int	len;
 
 	x = 0;
 	y = 0;
 	len = 0;
-	while(x < map->row)
+	while (x < map->row)
 	{
 		while (y < map->col)
 		{
@@ -76,16 +76,16 @@ int **ft_assignmap(int **arr, t_ber *map)
 
 void	ft_readmap(int **arr, t_ber *map)
 {
-	int x;
+	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while(x < map->row)
+	while (x < map->row)
 	{
 		while (y < map->col)
 		{
-			ft_printf("(%c)",arr[x][y]);
+			ft_printf("(%c)", arr[x][y]);
 			y++;
 		}
 		ft_printf("\n");
@@ -94,17 +94,15 @@ void	ft_readmap(int **arr, t_ber *map)
 	}
 }
 
-void	ft_freemap(int	**arr, t_ber *map)
+void	ft_freemap(int **arr, t_ber *map)
 {
-		int	times;
+	int	times;
 
-		times  = map->row ;
-		while(times--)
-			free(arr[times]);
-		free(arr);
+	times = map->row;
+	while (times--)
+		free(arr[times]);
+	free(arr);
 }
-
-
 /*
 void	ft_readber(int fd)
 {
