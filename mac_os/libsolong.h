@@ -13,9 +13,9 @@
 #ifndef LIBSOLONG_H
 # define LIBSOLONG_H
 
-#include <math.h>
-#include "../minilibx_linux/mlx.h"
-#include "libft/libft.h"
+# include <math.h>
+# include "minilibx/mlx.h"
+# include "libft/libft.h"
 
 # define MAX_HEIGHT 1280
 # define MAX_WIDTH 2560
@@ -48,34 +48,31 @@
 
 */
 
-
-
 # define P_PLAY "./pic_xpm/bird_mod_64.xpm"
 # define P_SKY "./pic_xpm/blue_mod_64.xpm"
 # define P_WALL "./pic_xpm/block_mod_64.xpm"
 # define P_COIN "./pic_xpm/coin_mod_64.xpm"
 # define P_EXIT "./pic_xpm/exit_mod_64.xpm"
 
-
+// [y][x]
 typedef struct s_ber
 {
-	int				**arr; //[y][x]
-	int				**tmp; //[y][x]
-	char			*str;
-	int 			len;
-	int				row;
-	int				col;
+	int		**arr;
+	int		**tmp;
+	char	*str;
+	int		len;
+	int		row;
+	int		col;
 }	t_ber;
 
-typedef struct	s_image
+typedef struct s_image
 {
-	void      *ptr;
-//	t_vector  size;
-	char      *pixel;
-	int       bpp;
-	int       ls;
-	int       endian;
-}   t_image;
+	void	*ptr;
+	char	*pixel;
+	int		bpp;
+	int		ls;
+	int		endian;
+}	t_image;
 
 typedef struct s_data
 {
@@ -105,27 +102,26 @@ typedef struct s_sol
 }	t_sol;
 
 //ft_solong.c
-void ft_playermove(t_sol *sol, int x, int y);
+void	ft_playermove(t_sol *sol, int x, int y);
 void	ft_startwindow(t_sol *sol);
-int     ft_key_hook(int keycode, t_sol *sol);
+int		ft_key_hook(int keycode, t_sol *sol);
 int		ft_clickclose(t_sol *sol);
 
 //ft_draw.c
-void	ft_draw_pixel(int width, int height, t_sol  *sol);
-void	ft_draw_grid(int box, int width , int height, t_sol *sol);
+void	ft_draw_pixel(int width, int height, t_sol *sol);
+void	ft_draw_grid(int box, int width, int height, t_sol *sol);
 void	ft_show_str(int box, t_sol *sol, t_ber *map);
-
 
 // ft_flag.c
 int		ft_noborder_up_dw(t_sol *sol);
 int		ft_noborder_lf_rg(t_sol *sol);
 int		ft_stranger(t_sol *sol);
 int		ft_checkflag(t_sol *sol);
-int		ft_findartifact(char *str,int c);
+int		ft_findartifact(char *str, int c);
 
 // ft_map.c
 void	ft_collectmap(int fd, t_sol *sol);
-int	**ft_mallocmap(t_ber *map);
+int		**ft_mallocmap(t_ber *map);
 int		**ft_assignmap(int **arr, t_ber *map);
 void	ft_readmap(int **arr, t_ber *map);
 void	ft_freemap(int	**arr, t_ber *map);
@@ -137,19 +133,18 @@ int		ft_checkdown(t_sol *sol);
 int		ft_checkright(t_sol *sol);
 int		ft_checkleft(t_sol *sol);
 
-
 //ft_floodfill.c
 int		ft_validpath(t_sol *sol);
 int		ft_findpos(t_sol *sol, int value, int *flag);
 void	ft_dps(int **arr, int x, int y, int *valid);
 int		ft_rev_findpos(t_sol *sol, int value);
-void	ft_rev_dps(int **arr, int x, int y, int *play, int *coin);
+void	ft_rev_dps(int **arr, int x, int y, int *count);
 
 //ft_pic.c
 void	ft_init_pic(t_data *data);
-t_image	*ft_create_picture(t_sol *sol,t_data obj, char *path);
+t_image	*ft_create_picture(t_sol *sol, t_data obj, char *path);
 void	ft_destroy_all(t_sol *sol);
 void	ft_show_pic(t_sol *sol, t_ber *map);
-void	ft_put_picture(t_sol *sol,void *ptr, int x, int y);
+void	ft_put_picture(t_sol *sol, void *ptr, int x, int y);
 
 #endif
